@@ -20,11 +20,11 @@ db.people.insert({name : 'Cibele'})
 db.people.insert({name : 'Antonio'})
 db.people.insert({name : 'Aparecida'})
 db.people.insert({name : 'Maria'})
-db.people.insert({name : 'João'})
+db.people.insert({name : 'Joao'})
 */
 
 /*
-db.people.insert({name : 'João', profession: 'pescador'})
+db.people.insert({name : 'Joao', profession: 'pescador'})
 db.people.insert({name : 'Pedro', profession: 'Motorista'})
 db.people.insert({name : 'China', age: 30 ,  profession: 'Motorista'})
 */
