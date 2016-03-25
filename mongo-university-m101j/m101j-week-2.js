@@ -1,3 +1,7 @@
+// MonogoDB University M101J Week 2 -> Mongo Shell, Query Operators, Update Operators and a Few Commands
+
+
+
 for(i = 0; i < 1000; i++){    
  names = ['exam', 'essay', 'quiz'];
     for(j=0; j < 3; j++){
@@ -7,7 +11,7 @@ for(i = 0; i < 1000; i++){
 } 
 
 
-// examples of $gt, $lt and using field selection 
+// examples of $gt, $lt and using field selection 
 db.scores.find({type: 'essay', score: 50}, {student: true, _id : false})
 db.scores.find({score : { $gt : 95 , $lte : 98 }, type : 'essay' } )
 
@@ -100,7 +104,6 @@ var p4 = { product : "p4",
   price : 13,
   reviews : [ { user : "fred", comment : "Great!" , rating : 3 },
               { user : "tom" , comment : "I agree with Fred, somewhat!" , rating : 3 } ]}
-
 
 db.catalog.insert(p1)
 db.catalog.insert(p2)
