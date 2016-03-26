@@ -125,15 +125,26 @@ while(cur.hasNext()){
 
 
 // counting results
-
 db.scores.count({type: 'essay', score: { $gt: 90 }})
 
 
+//examples of update
+db.people.update({name: 'Robson Duarte'}, { name: 'Robson Duarte', job: 'Engineer'})
+db.people.find()
 
+// using $set 
+db.people.update({name: 'Robson Duarte'}, { $set : { job: 'Engineer Sotfware'}})
+db.people.update({name: 'Robson Duarte'}, { $set : { age: 39}})
+db.people.update({name: 'Robson Duarte'}, { $inc : { age: 1}})
 
+db.users.find()
+
+db.users.update({username: 'splunker'}, { $set : { country : 'RU'}})
+db.users.update({username: 'jimmy'}, { $unset : { interests : 1}})
 
 
 
+
 
 
 
