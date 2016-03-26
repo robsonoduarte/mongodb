@@ -183,9 +183,9 @@ db.people.find()
 
 
 
-
-
 db.scores.find({score: {$lt : 70 }})
 db.scores.update({score: {$lt : 70 }}, { $inc : { score: 20}}, {multi: true})
 
+
+// removing data
 
