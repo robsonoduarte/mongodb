@@ -142,8 +142,31 @@ db.users.find()
 db.users.update({username: 'splunker'}, { $set : { country : 'RU'}})
 db.users.update({username: 'jimmy'}, { $unset : { interests : 1}})
 
+// Example $push , $pop, $pull, $pushAll, $pullAll, $addToSet
 
-
+db.arrays.insert({_id: 0, a: [ 1,2,3,4] })
+
+db.arrays.find()
+
+
+
+db.arrays.update({_id: 0 }, { $set: { 'a.2' : 5 } })
+db.arrays.update({_id: 0 }, { $push: { a : 6 } })
+db.arrays.update({_id: 0 }, { $pop: { a : 1 } })
+db.arrays.update({_id: 0 }, { $pushAll: { a : [7,9,10] } })
+db.arrays.update({_id: 0 }, { $pull: { a : 2 } })
+db.arrays.update({_id: 0 }, { $pullAll: { a : [3,4] } })
+db.arrays.update({_id: 0 }, { $addToSet: { a : 10 } })
+
+
+db.friends.insert({ _id : "Mike", interests : [ "chess", "botany" ] })
+db.friends.update( { _id : "Mike" }, { $push : { interests : "skydiving" } } );
+db.friends.update( { _id : "Mike" }, { $pop : { interests : -1 } } );
+db.friends.update( { _id : "Mike" }, { $addToSet : { interests : "skydiving" } } );
+db.friends.update( { _id : "Mike" }, { $pushAll: { interests : [ "skydiving" , "skiing" ] } } );
+
+db.friends.find()
+
 
 
 
