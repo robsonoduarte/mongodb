@@ -4,17 +4,15 @@ import static java.util.Arrays.asList;
 
 import org.bson.Document;
 
-import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 
 public class InsertTest {
 
 	public static void main(String[] args) {
 		
-		MongoClient mongoClient = new MongoClient("192.168.99.100", 27017);
-		MongoDatabase database = mongoClient.getDatabase("test");		
-		MongoCollection<Document> collection = database.getCollection("users");
+		
+		MongoCollection<Document> collection = new MongoConnection().getCollection("users");
+		
 		
 		
 		Document robson = new Document()
