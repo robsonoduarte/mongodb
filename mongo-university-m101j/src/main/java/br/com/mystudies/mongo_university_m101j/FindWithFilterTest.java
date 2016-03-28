@@ -12,7 +12,7 @@ import org.bson.conversions.Bson;
 
 import com.mongodb.client.MongoCollection;
 
-public class FindWithFilterTest2 {
+public class FindWithFilterTest {
 
 	public static void main(String[] args) {
 		
