@@ -15,7 +15,7 @@ public class MongoConnection {
 	
 	
 	public MongoConnection() {
-		database = new MongoClient("192.168.99.100", 27017).getDatabase("test");
+		database = new MongoClient("192.168.99.100", 27017).getDatabase("m101");
 	}
 
 
