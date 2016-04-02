@@ -1,4 +1,4 @@
-package br.com.mystudies.mongo_university_m101j.week2;
+package br.com.mystudies.mongo.university.m101j.week2;
 
 import static java.util.Arrays.asList;
 
