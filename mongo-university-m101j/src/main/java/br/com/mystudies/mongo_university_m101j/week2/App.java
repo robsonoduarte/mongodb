@@ -1,4 +1,4 @@
-package br.com.mystudies.mongo_university_m101j;
+package br.com.mystudies.mongo_university_m101j.week2;
 
 import static freemarker.template.Configuration.VERSION_2_3_23;
 import static spark.Spark.get;

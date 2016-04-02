@@ -1,4 +1,4 @@
-package br.com.mystudies.mongo_university_m101j;
+package br.com.mystudies.mongo_university_m101j.week2;
 
 import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Projections.fields;
