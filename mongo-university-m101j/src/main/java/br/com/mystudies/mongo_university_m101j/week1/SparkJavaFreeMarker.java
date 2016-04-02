@@ -1,4 +1,4 @@
-package br.com.mystudies.mongo_university_m101j.week2;
+package br.com.mystudies.mongo_university_m101j.week1;
 
 import static freemarker.template.Configuration.VERSION_2_3_23;
 import static spark.Spark.get;
@@ -15,7 +15,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateNotFoundException;
 
-public class App {
+public class SparkJavaFreeMarker {
 
 
 
@@ -52,7 +52,7 @@ public class App {
 
 	private static Configuration freeMakerConfiguration() throws IOException{
 		Configuration configuration = new Configuration(VERSION_2_3_23);
-		configuration.setClassForTemplateLoading(App.class, "/");
+		configuration.setClassForTemplateLoading(SparkJavaFreeMarker.class, "/");
 		return configuration;
 	}
 

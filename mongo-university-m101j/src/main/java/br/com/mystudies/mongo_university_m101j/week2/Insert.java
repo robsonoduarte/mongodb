@@ -6,7 +6,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-public class InsertTest {
+public class Insert {
 
 	public static void main(String[] args) {
 		

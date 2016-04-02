@@ -10,7 +10,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-public class UpdateTest {
+public class Update {
 
 	public static void main(String[] args) {
 		

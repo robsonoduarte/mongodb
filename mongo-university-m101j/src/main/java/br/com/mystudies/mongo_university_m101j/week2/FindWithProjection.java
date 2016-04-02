@@ -15,7 +15,7 @@ import org.bson.conversions.Bson;
 
 import com.mongodb.client.MongoCollection;
 
-public class FindWithProjectionTest {
+public class FindWithProjection {
 
 	public static void main(String[] args) {
 		

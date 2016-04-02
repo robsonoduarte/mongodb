@@ -6,7 +6,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-public class FindTest {
+public class Find {
 
 	public static void main(String[] args) {
 		

@@ -14,7 +14,7 @@ import org.bson.conversions.Bson;
 
 import com.mongodb.client.MongoCollection;
 
-public class FindWithSortSkipLimitTest {
+public class FindWithSortSkipLimit {
 
 	public static void main(String[] args) {
 		

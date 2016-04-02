@@ -9,7 +9,7 @@ import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
-public class DeleteTest {
+public class Delete {
 
 	public static void main(String[] args) {
 		
