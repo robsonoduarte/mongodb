@@ -11,6 +11,9 @@ public class App {
 
 	public static void main(String[] args) {
 
+		DataStore dataStore = new DataStore();
+
+
 		GithubUser githubUser = new GithubUser();
 		githubUser.followers = 15;
 		githubUser.following = 12;
@@ -19,10 +22,14 @@ public class App {
 		githubUser.memberSince = new Date();
 
 
+		dataStore.save(githubUser);
+
 
 		Organization organization = new Organization();
 		organization.created = new Date();
 		organization.name = "mystudies";
+
+		dataStore.save(organization);
 
 
 
@@ -32,10 +39,14 @@ public class App {
 		repository.owner = githubUser;
 
 
+		dataStore.save(repository);
+
+
 		githubUser.repositoreis.add(repository);
 
 
-		new DataStore().save(githubUser);
+		dataStore.save(githubUser);
+
 
 	}
 
