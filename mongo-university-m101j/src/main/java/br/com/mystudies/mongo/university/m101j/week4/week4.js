@@ -56,4 +56,23 @@ db.students.dropIndex({student_id:1})
 
 
 // Multikey Indexes
+db.foo.insert({a:1, b:2})
+db.foo.find()
+db.foo.createIndex({a:1, b:1})
+
+//  "isMultiKey" : true
+db.foo.explain().find({a:1, b:1})
+
+// test  "isMultiKey" : true,
+db.foo.insert({a:3, b:[ 3,5,7]})
+db.foo.find({a:3, b:3})
+
+db.foo.getIndexes()
+
+// try insert too arrays --> "errmsg" : "cannot index parallel arrays [b] [a]"
+db.foo.insert({a:[3,5,7], b:[ 3,5,7]})
+
+// try insert transversal array --> WriteResult({ "nInserted" : 1 })
+db.foo.insert({a:[3,5,7], b:8})
+db.foo.find({a:3, b:8 })
 
