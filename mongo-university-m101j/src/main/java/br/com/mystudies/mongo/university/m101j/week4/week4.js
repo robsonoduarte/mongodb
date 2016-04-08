@@ -1,3 +1,5 @@
+// Creating Indexes
+
 db = db.getSiblingDB("school");
 db.students.drop();
 
@@ -27,3 +29,31 @@ for (i = 0; i < 1000000; i++) {
 	}
 
 }
+
+
+
+
+db.students.findOne()
+
+// before cretead index spend more or less 30s 
+db.students.findOne({student_id:5})
+
+// search full collection
+db.students.explain().find({student_id:5})
+
+
+// after cretead index the query is immediate
+db.students.createIndex({student_id:1})
+
+// search in 10 documents
+db.students.explain(true).find({student_id:5})
+
+
+
+// Discovering and Deleting Indexes
+db.students.getIndexes()
+db.students.dropIndex({student_id:1})
+
+
+// Multikey Indexes
+
