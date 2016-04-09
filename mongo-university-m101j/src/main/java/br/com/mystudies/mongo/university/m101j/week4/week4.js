@@ -100,9 +100,21 @@ db.students.find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
 db.students.explain().find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
 
 
+//Index Creation Option Unique
+
+db.stuff.insert({thing:'apple'})
+db.stuff.insert({thing:'pear'})
+db.stuff.insert({thing:'apple'})
+db.stuff.find()
+db.stuff.createIndex({thing:1})
+db.stuff.dropIndex({thing:1})
+db.stuff.createIndex({thing:1},{unique:true})
+db.stuff.remove({thing: 'apple'}, {justOne: true})
+
+
+
 
 // Index creation, Sparse
-
 var e1 = {
     employye_id: 1,
     name: 'Robson Duarte',
