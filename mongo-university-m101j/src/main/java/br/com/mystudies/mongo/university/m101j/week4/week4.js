@@ -156,3 +156,9 @@ db.employyes.find().sort({employye_id:1})
 db.employyes.find().sort({employye_id:-1})
 db.employyes.explain().find().sort({employye_id:-1})
 db.employyes.explain().find().sort({cell:-1})
+
+
+// Index Creation, Background
+db.students.getIndexes()
+db.students.dropIndex({'scores.socre':1})
+db.students.createIndex({'scores.socre':1}, {background:true})
