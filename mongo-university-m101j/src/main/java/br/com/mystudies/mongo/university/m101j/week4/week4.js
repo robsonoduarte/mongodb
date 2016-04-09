@@ -162,3 +162,37 @@ db.employyes.explain().find().sort({cell:-1})
 db.students.getIndexes()
 db.students.dropIndex({'scores.socre':1})
 db.students.createIndex({'scores.socre':1}, {background:true})
+
+
+
+// Explain
+
+for(i=0; i<100; i++){
+	for(j=0; j<100; j++){
+  		x = [];
+  		for(k=0; k<100; k++){
+  			x.push({a: i, b: j, c:k , _id: (100* 100* i + 100 * j + k)});
+		}
+		db.example.insert(x)
+	}
+}
+
+
+db.example.count()
+db.example.find()
+db.example.createIndex({a:1, b:1})
+db.example.createIndex({b:1})
+
+
+
+// many forms to take the explain
+db.example.explain().find({a:17, b:55}).sort({b:-1})
+
+
+var exp = db.example.explain()
+exp.help()
+exp.find({a:17, b:55}).sort({b:-1})
+exp.find({c:10})
+
+var cursor = db.example.find({a:99})
+cursor.explain()
