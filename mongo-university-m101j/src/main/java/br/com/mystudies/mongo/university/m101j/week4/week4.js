@@ -35,7 +35,7 @@ for (i = 0; i < 1000000; i++) {
 
 db.students.findOne()
 
-// before cretead index spend more or less 30s 
+// before cretead index spend more or less 30s
 db.students.findOne({student_id:5})
 
 // search full collection
@@ -76,3 +76,25 @@ db.foo.insert({a:[3,5,7], b:[ 3,5,7]})
 db.foo.insert({a:[3,5,7], b:8})
 db.foo.find({a:3, b:8 })
 
+
+
+
+// Dot Notation and Multikey
+
+/db.students.createIndex({'scores.score':1})
+db.students.getIndexes()
+
+db.students.explain().find({'scores.score': {$gt: 99}})
+
+// use the index scores.score to filter the scores to aply the filter exam
+db.students.find({scores:{$elemMatch:{type: 'exam', score : { $gt: 99.8 }}}}).count()
+
+// see the total documents examined
+db.students.explain(true).find({scores:{$elemMatch:{type: 'exam', score : { $gt: 99.8 }}}})
+
+// is exact of the this number
+db.students.find({'scores.score': {$gt: 99.8}}).count()
+
+// this query don't work because the $and operator no match type: exam with score: gt 99.8
+db.students.find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
+db.students.explain().find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
