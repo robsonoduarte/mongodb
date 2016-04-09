@@ -98,3 +98,49 @@ db.students.find({'scores.score': {$gt: 99.8}}).count()
 // this query don't work because the $and operator no match type: exam with score: gt 99.8
 db.students.find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
 db.students.explain().find({$and:[{'scores.type': 'exam'}, {'scores.score':{$gt:99.8}}]})
+
+
+
+// Index creation, Sparse
+
+var e1 = {
+    employye_id: 1,
+    name: 'Robson Duarte',
+    cell: '123 345 567'
+}
+
+var e2 = {
+    employye_id: 2,
+    name: 'Ana Mara',
+    cell: '123 345 563'
+}
+
+var e3 = {
+    employye_id: 3,
+    name: 'Aparecida'
+}
+
+
+var e4 = {
+    employye_id: 4,
+    name: 'Antonio',
+}
+
+
+db.employyes.insert(e1)
+db.employyes.insert(e2)
+db.employyes.insert(e3)
+db.employyes.insert(e4)
+
+
+db.employyes.find()
+
+db.employyes.createIndex({employye_id:1})
+db.employyes.createIndex({cell:1},{unique:true, sparse : true})
+
+
+db.employyes.getIndexes()
+db.employyes.find().sort({employye_id:1})
+db.employyes.find().sort({employye_id:-1})
+db.employyes.explain().find().sort({employye_id:-1})
+db.employyes.explain().find().sort({cell:-1})
