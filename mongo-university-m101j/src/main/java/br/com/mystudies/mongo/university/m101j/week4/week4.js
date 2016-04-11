@@ -196,3 +196,22 @@ exp.find({c:10})
 
 var cursor = db.example.find({a:99})
 cursor.explain()
+
+
+// Explain Verbosity
+
+db.example.find()
+db.example.getIndexes()
+db.example.dropIndex({a:1, b:1})
+
+var exp = db.example.explain('executionStats')
+exp.find({a: 17, b: 55})
+
+db.example.createIndex({a:1, b:1})
+var exp = db.example.explain('allPlansExecution')
+exp.find({a: 17, b: 55})
+
+
+
+
+
