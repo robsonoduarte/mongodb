@@ -211,7 +211,25 @@ db.example.createIndex({a:1, b:1})
 var exp = db.example.explain('allPlansExecution')
 exp.find({a: 17, b: 55})
 
+// Covered Queries
 
+for(i=0; i<100; i++){
+	for(j=0; j<100; j++){
+  		x = [];
+  		for(k=0; k<100; k++){
+  			x.push({i: i, j: j, k:k});
+		}
+		db.numbers.insert(x)
+	}
+}
+
+db.numbers.find()
+db.numbers.getIndexes()
+db.numbers.createIndex({i:1, j:1, k:1})
+
+var exp = db.numbers.explain('executionStats')
+exp.find({i:45, j:23})
+exp.find({i:45, j:23},{_id:0 , i:1, j:1, k:1})
 
 
 
