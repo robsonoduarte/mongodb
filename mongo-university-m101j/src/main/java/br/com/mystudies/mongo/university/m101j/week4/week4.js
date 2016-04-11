@@ -239,3 +239,46 @@ db.students.getIndexes()
 db.students.stats()
 db.students.totalIndexSize()
 
+
+// Geospatial indexes
+
+var s1 = {
+	name: 'Rubys',
+	type: 'Barber',
+	location: [
+		40,
+		74
+	]
+
+}
+
+var s2 = {
+	name: 'ACE Hardware',
+	type: 'hardware',
+	location: [
+		40.232,
+		-7.3434
+	]
+
+}
+
+var s3 = {
+	name: 'Tickle Candy',
+	type: 'Food',
+	location: [
+		41.232,
+		-75.343
+	]
+
+}
+
+db.stores.insert(s1)
+db.stores.insert(s2)
+db.stores.insert(s3)
+
+db.stores.find()
+db.stores.ensureIndex({location:'2d', type:1})
+db.stores.getIndexes()
+
+db.stores.find({location:{$near:[50,50]}})
+
