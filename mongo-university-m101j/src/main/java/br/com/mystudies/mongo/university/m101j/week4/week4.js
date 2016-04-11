@@ -387,3 +387,41 @@ db.places.find({
   	  	}
 }})
 
+
+// Text Indexes
+var w1 ={
+  words: 'dog car book cell'
+}
+
+
+var w2 ={
+  words: 'dog pink black'
+}
+
+
+
+var w3 ={
+  words: 'beer pub car'
+}
+
+
+var w4 ={
+  words: 'home train black'
+}
+
+
+db.sentences.insert(w1)
+db.sentences.insert(w2)
+db.sentences.insert(w3)
+db.sentences.insert(w4)
+
+db.sentences.find()
+db.sentences.ensureIndex({words:'text'})
+db.sentences.getIndexes()
+db.sentences.find({$text:{$search:'dog'}})
+db.sentences.find({$text:{$search:'dog car'}}, {score:{$meta:'textScore'}}).sort({score:{$meta:'textScore'}})
+
+
+
+
+
