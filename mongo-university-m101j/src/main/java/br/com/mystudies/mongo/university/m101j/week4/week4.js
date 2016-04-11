@@ -280,5 +280,110 @@ db.stores.find()
 db.stores.ensureIndex({location:'2d', type:1})
 db.stores.getIndexes()
 
-db.stores.find({location:{$near:[50,50]}})
+db.routes.find({location:{$near:[50,50]}})
+
+
+// Geospation Spherical
+
+var p1 = {
+  	name: 'My Home',
+  	city: 'São Paulo',
+  	type: 'House',
+  	location :{
+  	  type: 'Point',
+  	  coordinates:[
+  	  	-46.515915,
+  	  	-23.5695488
+  	  ]
+  	}
+}
+
+
+
+
+var p2 = {
+  	name: 'Bar do Simpático ( Clodo )',
+  	city: 'São Paulo',
+  	type: 'Pub',
+  	location :{
+  	  type: 'Point',
+  	  coordinates:[
+  	  	-46.5157957,
+  	  	-23.5692151
+  	  ]
+ 	}
+}
+
+
+
+var p3 = {
+  	name: 'Shopping Leste Aricanduva',
+  	city: 'São Paulo',
+  	type: 'SuperMakert',
+  	location :{
+  	  type: 'Point',
+  	  coordinates:[
+  	  	-46.5190455,
+  	  	-23.570798
+  	  ]
+  	}
+}
+
+
+
+var p4 = {
+  	name: 'Cemitério Municipal Vila Formosa',
+  	city: 'São Paulo',
+  	type: 'Cemetery',
+  	location :{
+  	  type: 'Point',
+  	  coordinates:[
+  	  	-46.517953,
+  	  	-23.5669875
+  	  ]
+  	}
+}
+
+
+
+
+var p5 = {
+  	name: 'Santuário do Bom Jesus da Lapa',
+  	city: 'Bahia',
+  	type: 'Church',
+  	location :{
+  	  type: 'Point',
+  	  coordinates:[
+  	  	-43.4170571,
+  	  	-13.2534846
+  	  ]
+  	}
+}
+
+
+
+
+
+
+
+db.places.insert(p1)
+db.places.insert(p2)
+db.places.insert(p3)
+db.places.insert(p4)
+db.places.insert(p5)
+
+db.places.find()
+db.places.ensureIndex({location:'2dsphere'})
+db.places.getIndexes()
+
+db.places.find({
+  	location:{
+  	  	$near:{
+  	  	  $geometry:{
+  	  	    	type: 'Point',
+  	  	    	"coordinates" : [-46.515915, -23.5695488]
+  	  	  },
+  	  	  $maxDistance:100
+  	  	}
+}})
 
