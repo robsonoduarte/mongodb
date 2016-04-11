@@ -232,4 +232,10 @@ exp.find({i:45, j:23})
 exp.find({i:45, j:23},{_id:0 , i:1, j:1, k:1})
 
 
+// How Large is your Index
+
+db.students.find()
+db.students.getIndexes()
+db.students.stats()
+db.students.totalIndexSize()
 
