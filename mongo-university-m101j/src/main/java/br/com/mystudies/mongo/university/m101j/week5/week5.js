@@ -56,3 +56,10 @@ db.products.aggregate([{
   		}
  ])
 
+
+ // compound ids
+
+ // for mongo the real requirement for _id is that it be unique
+ // if you try insert once documents you can seyy the duplicate key error.
+ db.foo.insert({_id:{name:'Robson', class:'m101'}, hometown: 'SP'})
+
