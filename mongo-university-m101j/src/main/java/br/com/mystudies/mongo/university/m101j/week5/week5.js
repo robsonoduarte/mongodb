@@ -33,6 +33,7 @@ db.stuff.insert({a:3, b:5, c:3})
 
 db.stuff.aggregate([{$group:{_id: '$c'}}])
 
+
 db.products.aggregate([
 	{$group:
 	  	{
@@ -43,4 +44,15 @@ db.products.aggregate([
 ])
 
 
+
+// Compound Grouping
+
+db.products.aggregate([{
+  		$group: { _id: {
+	  		  		maker: '$manufacturer',
+		  		  	category: '$category'},
+		  		  num_products: {$sum:1 }
+		  		 }
+  		}
+ ])
 
