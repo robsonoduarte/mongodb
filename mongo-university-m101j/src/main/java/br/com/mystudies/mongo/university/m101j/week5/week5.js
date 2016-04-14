@@ -104,10 +104,30 @@ db.products.aggregate([{
 db.zips.aggregate([
 	{$group:
 	  	{_id:'$state',
-	  	  avg:{$avg:'$pop'
-	  	 }
+	  	  avg:{$avg:'$pop'}
+	  	}
+	}
+])
+
+
+// using  $addToSet
+
+db.products.aggregate([
+	{$group:{
+	  _id: { maker: '$manufacturer'},
+	  category: {$addToSet:'$category'}
 	  }
-}])
+ }])
+
+
+ // quiz
+ db.zips.aggregate([
+	{$group:
+	  {_id:'$city',
+	    postal_codes:{$addToSet:'$_id'}
+	   }
+	 }
+])
 
 
 
