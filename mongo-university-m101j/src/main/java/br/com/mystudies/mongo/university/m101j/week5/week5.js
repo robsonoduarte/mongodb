@@ -63,3 +63,28 @@ db.products.aggregate([{
  // if you try insert once documents you can seyy the duplicate key error.
  db.foo.insert({_id:{name:'Robson', class:'m101'}, hometown: 'SP'})
 
+
+
+ // using $sum
+
+ db.products.aggregate([
+	{$group:
+	  	{
+	  	  _id: {
+	  	    	maker: '$manufacturer'},
+	  	    	sum_prices: {$sum:'$price'}
+	  	 }
+	  }
+])
+
+// quiz
+
+db.zips.aggregate([
+	{$group:{
+	  	_id:'$state',
+	  	population:{$sum:'$pop'}
+	  }
+	}
+])
+
+
