@@ -88,3 +88,26 @@ db.zips.aggregate([
 ])
 
 
+
+// using $avg
+
+db.products.aggregate([{
+  	$group:{
+  	  	_id : {
+  	  	  category: '$category'},
+  	  	  avg:{$avg:'$price'}}
+  	}
+])
+
+
+// quiz
+db.zips.aggregate([
+	{$group:
+	  	{_id:'$state',
+	  	  avg:{$avg:'$pop'
+	  	 }
+	  }
+}])
+
+
+
