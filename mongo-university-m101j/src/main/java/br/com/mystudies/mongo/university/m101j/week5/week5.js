@@ -131,3 +131,15 @@ db.products.aggregate([
 
 
 
+// Using $Push
+
+db.products.aggregate([{
+  	$group:{
+  	  	_id:{maker:'$manufacturer'},
+  	  	categories:{$push:'$category'}
+  	  }
+}])
+
+
+
+
