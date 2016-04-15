@@ -142,4 +142,21 @@ db.products.aggregate([{
 
 
 
+// Using $max and $min
+
+db.products.aggregate([{
+  	$group:{
+  	  	_id:{maker:'$manufacturer'},
+  	  	categories:{$max:'$price'}
+  	  }
+}])
+
+
+db.products.aggregate([{
+  	$group:{
+  	  	_id:{maker:'$manufacturer'},
+  	  	categories:{$min:'$price'}
+  	  }
+}])
+
 
