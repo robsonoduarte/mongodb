@@ -162,7 +162,6 @@ db.products.aggregate([{
 
 
 // quiz
-
 db.zips.aggregate([
 	{$group:
 	  	{	_id:'$state',
@@ -170,3 +169,69 @@ db.zips.aggregate([
 	  	  }
 	 }
 ])
+
+
+
+
+
+
+
+
+// Double $group stages
+
+// class 30
+s1 ={'student_id' : 1,'score' : 10,'class_id' : 30,'type': 'homework'};
+s2 ={'student_id' : 1,'score' : 20,'class_id' : 30,'type': 'quiz'};
+s3 ={'student_id' : 1,'score' : 50,'class_id' : 30,'type': 'final test'};
+s4 ={'student_id' : 2,'score' : 100,'class_id' : 30,'type': 'exam'};
+s5 ={'student_id' : 2,'score' : 10,'class_id' : 30,'type': 'homework'};
+s6 ={'student_id' : 2,'score' : 20,'class_id' : 30,'type': 'quiz'};
+s7 ={'student_id' : 2,'score' : 50,'class_id' : 30,'type': 'final test'};
+s8 ={'student_id' : 2,'score' : 100,'class_id' : 30,'type': 'exam'};
+
+db.students.insert(s1);
+db.students.insert(s2);
+db.students.insert(s3);
+db.students.insert(s4);
+
+
+// class 31
+s1 ={'student_id' : 1,'score' : 10,'class_id' : 31,'type': 'homework'};
+s2 ={'student_id' : 1,'score' : 20,'class_id' : 31,'type': 'quiz'};
+s3 ={'student_id' : 1,'score' : 50,'class_id' : 31,'type': 'final test'};
+s4 ={'student_id' : 2,'score' : 100,'class_id' : 31,'type': 'exam'};
+s5 ={'student_id' : 2,'score' : 10,'class_id' : 31,'type': 'homework'};
+s6 ={'student_id' : 2,'score' : 20,'class_id' : 31,'type': 'quiz'};
+s7 ={'student_id' : 2,'score' : 50,'class_id' : 31,'type': 'final test'};
+s8 ={'student_id' : 2,'score' : 100,'class_id' : 31,'type': 'exam'};
+
+
+db.students.insert(s1);
+db.students.insert(s2);
+db.students.insert(s3);
+
+
+//single group
+db.students.aggregate([{$group:{_id:{class_id:'$class_id', student_id:'$student_id'}, average:{$sum:'$score'}}}])
+// double group
+db.students.aggregate([{$group:{_id:{class_id:'$class_id', student_id:'$student_id'}, average:{$sum:'$score'}}},{$group:{_id:'$_id.class_id', average:{$avg:'$average'}}}])
+
+
+// quiz
+
+db.fun.insert({ "_id" : 0, "a" : 0, "b" : 0, "c" : 21 })
+db.fun.insert({ "_id" : 1, "a" : 0, "b" : 0, "c" : 54 })
+db.fun.insert({ "_id" : 2, "a" : 0, "b" : 1, "c" : 52 })
+db.fun.insert({ "_id" : 3, "a" : 0, "b" : 1, "c" : 17 })
+db.fun.insert({ "_id" : 4, "a" : 1, "b" : 0, "c" : 22 })
+db.fun.insert({ "_id" : 5, "a" : 1, "b" : 0, "c" : 5 })
+db.fun.insert({ "_id" : 6, "a" : 1, "b" : 1, "c" : 87 })
+db.fun.insert({ "_id" : 7, "a" : 1, "b" : 1, "c" : 97 })
+
+
+db.fun.aggregate([{$group:{_id:{a:"$a", b:"$b"}, c:{$max:"$c"}}}])
+db.fun.aggregate([{$group:{_id:{a:"$a", b:"$b"}, c:{$max:"$c"}}}, {$group:{_id:"$_id.a", c:{$min:"$c"}}}])
+
+
+
+
