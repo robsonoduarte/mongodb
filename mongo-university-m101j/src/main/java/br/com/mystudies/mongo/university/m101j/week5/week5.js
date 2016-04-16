@@ -288,5 +288,59 @@ db.zips.aggregate([{$match:{pop:{$gt:100000}}}])
 
 
 
+// using $sort
 
+db.zips.aggregate([
+	{$match:
+	  {
+	    state:'NY'
+	   }
+	 },
+	 {$group:
+	   {
+	     _id:'$city',
+	     pop:{$sum:'$pop'}
+	   }
+	 },
+	 {$project:
+	   {
+	     _id:0,
+	     city: '$_id',
+	     pop:1
+	   }
+	 },
+	 {$sort:
+	   {
+	     pop:-1
+	   }
+	 }
+])
+
+// quiz
+
+db.zips.aggregate([
+	{$match:
+	  {
+	    state:'NY'
+	   }
+	 },
+	 {$group:
+	   {
+	     _id:'$city',
+	     pop:{$sum:'$pop'}
+	   }
+	 },
+	 {$project:
+	   {
+	     _id:0,
+	     city: '$_id',
+	     pop:1
+	   }
+	 },
+	 {$sort:
+	   {
+	     pop:-1
+	   }
+	 }
+])
 
