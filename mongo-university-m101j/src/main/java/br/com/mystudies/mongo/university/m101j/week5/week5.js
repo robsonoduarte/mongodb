@@ -234,4 +234,30 @@ db.fun.aggregate([{$group:{_id:{a:"$a", b:"$b"}, c:{$max:"$c"}}}, {$group:{_id:"
 
 
 
+// using $project
+
+db.products.aggregate([{
+  	$project:{
+  	  	_id:0,
+  	  	maker:{$toLower:'$manufacturer'},
+  	  	details:{category:'$category', price:{$multiply:['$price',10]}},
+  	  	item: '$name'
+  	  }
+  	}
+ ])
+
+// quiz
+
+ db.zips.aggregate([{
+  	$project:{
+  	  	_id:0,
+  	  	city:{$toLower:'$city'},
+  	  	pop:1,
+  	  	state:1,
+  	  	zip: '$_id'
+  	  }
+  	}
+ ])
+
+
 
