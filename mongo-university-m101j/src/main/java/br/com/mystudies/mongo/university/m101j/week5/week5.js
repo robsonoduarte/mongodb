@@ -317,7 +317,12 @@ db.zips.aggregate([
 ])
 
 // quiz
+db.zips.aggregate([{$sort:{state:1, city:1}}])
 
+
+
+
+// using $limit and $skip
 db.zips.aggregate([
 	{$match:
 	  {
@@ -341,6 +346,13 @@ db.zips.aggregate([
 	   {
 	     pop:-1
 	   }
-	 }
+	 },
+	 {$skip:10},
+	 {$limit:5}
 ])
+
+
+
+
+
 
