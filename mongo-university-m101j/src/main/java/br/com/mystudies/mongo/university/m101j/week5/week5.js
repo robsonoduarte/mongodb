@@ -235,7 +235,6 @@ db.fun.aggregate([{$group:{_id:{a:"$a", b:"$b"}, c:{$max:"$c"}}}, {$group:{_id:"
 
 
 // using $project
-
 db.products.aggregate([{
   	$project:{
   	  	_id:0,
@@ -246,8 +245,8 @@ db.products.aggregate([{
   	}
  ])
 
-// quiz
 
+// quiz
  db.zips.aggregate([{
   	$project:{
   	  	_id:0,
@@ -258,6 +257,36 @@ db.products.aggregate([{
   	  }
   	}
  ])
+
+ // using $match
+
+ db.zips.aggregate([
+	{$match:
+	  {
+	    state:'CA'
+	   }
+	},
+	{$group:
+	  	{
+	  	  _id:'$city',
+	  	  pop: {$sum:'$pop'},
+	  	  zip_codes:{$addToSet:'$_id'}
+	  	 }
+	 },
+	 {$project:
+	   	{
+	   	  _id:0,
+	   	  city:'$_id',
+	   	  pop:1,
+	   	  zip_codes:1
+	   	}
+	 }
+])
+
+// quiz
+db.zips.aggregate([{$match:{pop:{$gt:100000}}}])
+
+
 
 
 
