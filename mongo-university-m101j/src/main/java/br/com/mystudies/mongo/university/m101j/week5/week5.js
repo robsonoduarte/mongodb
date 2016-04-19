@@ -463,4 +463,26 @@ db.small_posts.aggregate([
 ])
 
 
+// homework 5.2
+
+db.small_zips.aggregate([
+	{$group:
+	  {
+	    _id:{state:'$state', city:'$city'},
+	    pop:{$sum:'$pop'}
+	  }
+	},
+	{$match:
+	  {'_id.state':{$in:['CA','NY']},
+	    pop:{$gt:25000}
+	   }
+	 },{$group:
+	   {
+	     _id:null,
+	     pop:{$avg:'$pop'}
+	 	}
+	 }
+
+])
+
 
