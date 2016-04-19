@@ -448,4 +448,19 @@ db.inventory.aggregate([
 ])
 
 
+// homework 5.1
+
+
+db.small_posts.aggregate([
+	{$unwind:'$comments'},
+	{$group:
+	  {
+	    _id: '$comments.author',
+	    count:{$sum:1}
+	   }
+	 },
+	 {$sort:{count:-1}}
+])
+
+
 
