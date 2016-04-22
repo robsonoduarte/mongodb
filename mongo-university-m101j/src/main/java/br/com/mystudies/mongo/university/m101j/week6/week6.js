@@ -4,17 +4,17 @@ config = {
 	members:[
 		{
 		  _id:0,
-		  host:'07ac44186bea:27017',
+		  host:'e6a62d53ec40:27017',
 		  priority:0,
 		  slaveDelay:5
 		},
 		{
 		  _id:1,
-		  host:'07ac44186bea:27018'
+		  host:'e6a62d53ec40:27018'
 		},
 		{
 		  _id:2,
-		  host:'07ac44186bea:27019'
+		  host:'e6a62d53ec40:27019'
 		}
 	]
 }
