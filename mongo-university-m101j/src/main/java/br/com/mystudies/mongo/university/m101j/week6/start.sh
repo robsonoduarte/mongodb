@@ -1,6 +1,5 @@
 #!/bin/bash
 
-mongod --port 27017 --dbpath /data/rs1 --replSet m101 &
-mongod --port 27018 --dbpath /data/rs2 --replSet m101 &
-mongod --port 27019 --dbpath /data/rs3 --replSet m101
-
+mongod --replSet m101 --dbpath /data/rs1 --port 27017 &
+mongod --replSet m101 --dbpath /data/rs2 --port 27018 &
+mongod --replSet m101 --dbpath /data/rs3 --port 27019
