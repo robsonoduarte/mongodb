@@ -41,3 +41,14 @@ db.messages.aggregate([
 db.messages.find({'headers.Message-ID': '<8147308.1075851042335.JavaMail.evans@thyme>'})
 db.messages.update({'headers.Message-ID': '<8147308.1075851042335.JavaMail.evans@thyme>'}, {$addToSet:{'headers.To': 'mrpotatohead@mongodb.com'}})
 
+
+
+// QUESTION 4
+
+// example update
+db.posts.update({permalink : 'cxzdzjkztkqraoqlgcru'}, { $inc : { 'comments.2.num_likes': 1}})
+
+// with java drive
+ String num_likes = "comments." + ordinal + ".num_likes";
+postsCollection.updateOne(eq("permalink", permalink), inc(num_likes, 1));
+
