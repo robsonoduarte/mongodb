@@ -52,3 +52,28 @@ db.posts.update({permalink : 'cxzdzjkztkqraoqlgcru'}, { $inc : { 'comments.2.num
  String num_likes = "comments." + ordinal + ".num_likes";
 postsCollection.updateOne(eq("permalink", permalink), inc(num_likes, 1));
 
+
+// QUESTION 5
+
+for(i=0; i<100; i++){
+	for(j=0; j<100; j++){
+  		x = [];
+  		for(k=0; k<100; k++){
+  			x.push({a: i, b: j, c:k , _id: (100* 100* i + 100 * j + k)});
+		}
+		db.stuff.insert(x)
+	}
+}
+
+
+
+db.stuff.createIndex({a:1, b:1})
+db.stuff.createIndex({a:1, c:1})
+db.stuff.createIndex({c:1})
+db.stuff.createIndex({a:1, b:1, c:-1})
+
+db.stuff.getIndexes()
+
+
+db.stuff.find({'a':{'$lt':10000}, 'b':{'$gt': 5000}}, {'a':1, 'c':1}).sort({'c':-1}).explain('allPlansExecution')
+
